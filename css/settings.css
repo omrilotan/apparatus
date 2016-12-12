@@ -1,0 +1,43 @@
+aside {
+    position: relative;
+}
+aside > a, aside input {
+    display: block;
+    float: left;
+    padding: 0 1em;
+    box-sizing: border-box;
+}
+aside p {
+    padding: .5em 1em;
+    line-height: 1.5em;
+    white-space: pre-line;
+}
+aside p a {
+    color: var(--theme-colour);
+    text-decoration: underline;
+}
+
+aside form {
+    overflow: auto;
+}
+.sheet-form > div {
+    overflow: auto;
+}
+.sheet-form input {
+    width: 100%;
+}
+.sheet-form a {
+    float: right;
+    padding: 0;
+    text-align: center;
+    padding: 0 1em;
+    cursor: pointer;
+}
+.sheet-form a:hover {
+    background: #fff;
+}
+
+a.colour {
+    display: inline-block;
+    width: 20%;
+}

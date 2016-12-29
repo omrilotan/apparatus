@@ -2,6 +2,8 @@
     document.body.addEventListener('click', callback);
     document.body.addEventListener('submit', callback);
     document.body.addEventListener('focus', callback);
+    document.body.addEventListener('keyup', callback);
+    document.body.addEventListener('search', callback);
 
     function callback(evt) {
         let tag = evt.target.tagName.toLowerCase();
@@ -139,5 +141,41 @@
     tagActions.input.focus = function(evt) {
         evt.target.getAttribute('autohighlight') !== null && evt.target.select();
     }
+
+    tagActions.input.search =
+    tagActions.input.keyup = function(evt) {
+        let target = evt.target;
+        let targetAttr = target.getAttribute('target');
+        let action = target.action;
+
+        if (tagActions.input.keyup.hasOwnProperty(targetAttr)) {
+            tagActions.input.keyup[targetAttr].call(evt, target, action);
+        }
+    }
+
+    let lastlistsearch = '';
+    tagActions.input.keyup.listsearch = debounce((target, action) => {
+        if (target.value === lastlistsearch) {
+            return;
+        }
+
+        switch (target.value) {
+            case '':
+                (new Flow())
+                    .step(DAL.getStoredData)
+                    .step(build.list)
+                    .go();
+                break;
+            default:
+                (new Flow())
+                    .step(DAL.getStoredData)
+                    .step((list, next) => DAL.filter(list, target.value, next) )
+                    .step(build.list)
+                    .go();
+                break;
+        }
+
+        lastlistsearch = target.value;
+    });
 
 }(document));

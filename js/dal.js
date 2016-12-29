@@ -27,6 +27,7 @@ var DAL = (function() {
         worksheetURL,
         updateSheet,
         getStoredList,
+        filter,
         getStoredData,
         syncLocalAndRemote,
 
@@ -82,6 +83,12 @@ var DAL = (function() {
             .step((items, next) => next(items && items[DATA_KEY]) )
             .step((list) => memoise('list', list, next) )
             .go();
+    }
+
+    function filter(list, filter, next = noop) {
+        let filtered = list.filter((item) => item[0].title.toLowerCase().indexOf(filter.toLowerCase()) !== -1);
+        filtered.unshift([{ type: 'listsearch', value: filter }]);
+        next(filtered);
     }
 
     function getStoredList(next = noop) {

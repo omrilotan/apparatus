@@ -83,6 +83,10 @@ nav input {
     width: 100%;
 }
 
+input[target="listsearch"] {
+    border-bottom:1px solid var(--theme-colour);
+}
+
 .note {
     padding: .5em .75em .25em;
     background: #f7e18b;

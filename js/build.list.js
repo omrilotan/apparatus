@@ -12,7 +12,8 @@ build.list = (function(
         link: _link,
         cookie: _cookie,
         script: _script,
-        search: _search
+        search: _search,
+        listsearch: _listsearch
     };
 
     function buildList(items = [], next = noop) {
@@ -25,8 +26,15 @@ build.list = (function(
             return;
         }
 
+        if (items.filter((item) => item[0].type === 'listsearch').length === 0) {
+            appendToFragemnt(_listsearch({ value: '' }));
+        }
+
         items.map(buildRecord).forEach(appendToFragemnt);
         group(fragments, (res) => nav.appendChild(res) );
+
+        setTimeout(() => nav.querySelector('input[target="listsearch"]').focus(), 200);
+
         next();
     }
 
@@ -62,6 +70,22 @@ build.list = (function(
         let type = item.type.trim().toLowerCase();
 
         return dictionary.hasOwnProperty(type) ? dictionary[type](item) : _fragment();
+    }
+
+    function _listsearch(data) {
+        return _element(
+            'input',
+            '',
+            {
+                name: 'listsearch',
+                type: 'search',
+                value: data.value || ''
+            },
+            {
+                placeholder: 'Filter this list',
+                target: 'listsearch'
+            }
+        );
     }
 
     function _link(data) {

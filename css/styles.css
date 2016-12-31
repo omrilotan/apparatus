@@ -94,3 +94,9 @@ nav, aside {
 .hidden {
     display: none;
 }
+
+*:focus,
+input:focus::-webkit-input-placeholder {
+    color: var(--theme-colour) !important;
+    text-indent: .25em;
+}

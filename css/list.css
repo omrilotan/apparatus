@@ -66,14 +66,18 @@ nav form button {
     padding: 0 1em;
     text-align: center;
 }
+
+nav input { background: transparent; }
+
 nav a,
-nav input {
+nav form {
     white-space: nowrap;
     color: #454545;
     background: #fff;
     transition: none;
 }
-nav a:nth-child(even) {
+nav a:nth-child(even),
+nav form:nth-child(even) {
     background: #f3f3f3;
 }
 nav a:hover {

@@ -16,6 +16,8 @@ build.list = (function(
         listsearch: _listsearch
     };
 
+    let tabindex = 0;
+
     function buildList(items = [], next = noop) {
         nav.innerHTML = '';
         empty(fragments);
@@ -25,6 +27,8 @@ build.list = (function(
             next();
             return;
         }
+
+        tabindex = 0;
 
         if (items.filter((item) => item[0].type === 'listsearch').length === 0) {
             appendToFragemnt(_listsearch({ value: '' }));
@@ -83,7 +87,8 @@ build.list = (function(
             },
             {
                 placeholder: 'Filter this list',
-                target: 'listsearch'
+                target: 'listsearch',
+                tabindex: ++tabindex
             }
         );
     }
@@ -96,6 +101,9 @@ build.list = (function(
                 href: data.value || '',
                 label: data.label || '',
                 className: data.className || ''
+            },
+            {
+                tabindex: ++tabindex
             }
         );
     }
@@ -110,7 +118,8 @@ build.list = (function(
                 className: data.className
             },
             {
-                target: 'cookie'
+                target: 'cookie',
+                tabindex: ++tabindex
             }
         );
     }
@@ -125,7 +134,8 @@ build.list = (function(
                 className: data.className
             },
             {
-                target: 'script'
+                target: 'script',
+                tabindex: ++tabindex
             }
         );
     }
@@ -154,12 +164,13 @@ build.list = (function(
                 type: 'search'
             },
             {
-                placeholder: data.title
+                placeholder: data.title,
+                tabindex: ++tabindex
             }
         );
 
         div.appendChild(i);
-        f.appendChild(_element('button', '', { innerHTML: '&#128270;' }));
+        f.appendChild(_element('button', '', { innerHTML: '&#128270;' }, {tabindex: '-1'}));
         f.appendChild(div);
         return f;
     }

@@ -59,7 +59,8 @@ build.settings = (function(
                 value: url
             }, {
                 autohighlight: 'true',
-                placeholder: 'Enter sheet URL'
+                placeholder: 'Enter sheet URL',
+                tabindex: '-1'
             }
         );
 
@@ -75,6 +76,9 @@ build.settings = (function(
             {
                 href: url,
                 innerHTML: '&#9997;'
+            },
+            {
+                tabindex: '-1'
             }
         );
     }
@@ -87,7 +91,8 @@ build.settings = (function(
                 href: '#!',
                 innerHTML: '&times;'
             }, {
-                target: 'purge'
+                target: 'purge',
+                tabindex: '-1'
             }
         );
     }
@@ -120,7 +125,8 @@ build.settings = (function(
                 style: `color:#fff; background:${hex};`
             },
             {
-                target: 'colour'
+                target: 'colour',
+                tabindex: '-1'
             }
         );
     }
@@ -137,6 +143,9 @@ build.settings = (function(
             'open source',
             {
                 href: 'https://github.com/omrilotan/apparatus'
+            },
+            {
+                tabindex: '-1'
             }
         ));
         summary.appendChild(document.createTextNode(' bookmark and collaboration tool. Create your spreadsheet and start collaborating!'));
@@ -146,6 +155,9 @@ build.settings = (function(
             'Instructions are available in the repo.',
             {
                 href: 'https://github.com/omrilotan/apparatus#readme'
+            },
+            {
+                tabindex: '-1'
             }
         ));
 

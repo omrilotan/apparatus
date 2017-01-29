@@ -24,7 +24,7 @@ build.list = (function(
 
         if (!items || !items.length) {
             nav.appendChild(emptyNav());
-            document.body.classList.add('empty-list');
+            document.body.classList.remove('list');
             next();
             return;
         }
@@ -33,7 +33,9 @@ build.list = (function(
 
         items.map(buildRecord).forEach(appendToFragemnt);
         group(fragments, (res) => nav.appendChild(res) );
-        document.body.classList.remove('empty-list');
+        document.body.classList.add('list');
+
+        setTimeout(() => nav.querySelector('input[target="listsearch"]').focus(), 200);
 
         next();
     }

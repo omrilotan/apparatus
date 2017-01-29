@@ -79,13 +79,16 @@ h4 {
 
 input[target="listsearch"] {
     width: 100%;
-    border-bottom: 1px solid var(--theme-colour);
     padding: 0 .5em;
-    height: 3em;
+    height: 0;
+    border-bottom: 0;
     display: block;
 }
-.settings input[target="listsearch"],
-.empty-list input[target="listsearch"] {
+.list input[target="listsearch"] {
+    border-bottom: 1px solid var(--theme-colour);
+    height: 3em;
+}
+.list.settings input[target="listsearch"] {
     height: 0;
     border-bottom: 0;
 }

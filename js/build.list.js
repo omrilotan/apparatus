@@ -9,11 +9,11 @@ build.list = (function(
     const fragments = {};
     const dictionary = {
         note: _note,
+        plain: _plain,
         link: _link,
         cookie: _cookie,
         script: _script,
-        search: _search,
-        listsearch: _listsearch
+        search: _search
     };
 
     let tabindex = 0;
@@ -24,20 +24,16 @@ build.list = (function(
 
         if (!items || !items.length) {
             nav.appendChild(emptyNav());
+            document.body.classList.add('empty-list');
             next();
             return;
         }
 
         tabindex = 0;
 
-        if (items.filter((item) => item[0].type === 'listsearch').length === 0) {
-            appendToFragemnt(_listsearch({ value: '' }));
-        }
-
         items.map(buildRecord).forEach(appendToFragemnt);
         group(fragments, (res) => nav.appendChild(res) );
-
-        setTimeout(() => nav.querySelector('input[target="listsearch"]').focus(), 200);
+        document.body.classList.remove('empty-list');
 
         next();
     }
@@ -74,23 +70,6 @@ build.list = (function(
         let type = item.type.trim().toLowerCase();
 
         return dictionary.hasOwnProperty(type) ? dictionary[type](item) : _fragment();
-    }
-
-    function _listsearch(data) {
-        return _element(
-            'input',
-            '',
-            {
-                name: 'listsearch',
-                type: 'search',
-                value: data.value || ''
-            },
-            {
-                placeholder: 'Filter this list',
-                target: 'listsearch',
-                tabindex: ++tabindex
-            }
-        );
     }
 
     function _link(data) {
@@ -176,8 +155,8 @@ build.list = (function(
     }
 
     function _note(data) {
-        let article = document.createElement('article');
-        article.className = 'note';
+        let article = _element('article', '', { className: 'note' });
+
         if (data.title) {
             let h = document.createElement('h3');
             h.appendChild(document.createTextNode(data.title));
@@ -195,6 +174,10 @@ build.list = (function(
         });
 
         return article.children.length ? article : _fragment();
+    }
+
+    function _plain(data) {
+        return _element('span', data.value);
     }
 
     function group(fragments, next = noop) {

@@ -35,8 +35,6 @@ header {
     white-space: nowrap;
     user-select: none;
     cursor: default;
-}
-header {
     border-bottom: 1px solid #eee;
     padding: 0 0 0 1em;
 }
@@ -77,6 +75,19 @@ h4 {
 .settings .settings-trigger:before {
     content: "\2794";
     transform: rotate3d(0, 0, 1, 180deg);
+}
+
+input[target="listsearch"] {
+    width: 100%;
+    border-bottom: 1px solid var(--theme-colour);
+    padding: 0 .5em;
+    height: 3em;
+    display: block;
+}
+.settings input[target="listsearch"],
+.empty-list input[target="listsearch"] {
+    height: 0;
+    border-bottom: 0;
 }
 
 main {

@@ -51,7 +51,8 @@ nav svg path {
 }
 nav h2,
 nav a,
-nav input {
+nav input,
+nav span {
     padding: 0 1em;
     display: block;
     overflow: hidden;
@@ -85,10 +86,6 @@ nav a:hover {
 }
 nav input {
     width: 100%;
-}
-
-input[target="listsearch"] {
-    border-bottom:1px solid var(--theme-colour);
 }
 
 .note {

@@ -3,7 +3,7 @@
   "name": "Apparatus",
   "author": "Omri",
   "description": "Apparatus is an open source bookmark and collaboration tool.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "icons": {
     "16": "images/icon.png",
     "48": "images/image.png",

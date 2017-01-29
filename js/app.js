@@ -45,15 +45,28 @@ var app = (function() {
         DAL.getColour(build.colour);
 
         (new Flow())
-            .step(DAL.getStoredList)
-            .step(build.settings)
-            .step(DAL.getStoredData)
-            .step(build.list)
+            .step(get_and_build_settings)
+            .step(get_and_build_list)
             .step(DAL.syncLocalAndRemote)
             .step(next)
             .go();
     }
 
+    function get_and_build_settings(next = noop) {
+        (new Flow())
+            .step(DAL.getStoredList)
+            .step(build.settings)
+            .step(next)
+            .go();
+    }
+
+    function get_and_build_list(next = noop) {
+        (new Flow())
+            .step(DAL.getStoredData)
+            .step(build.list)
+            .step(next)
+            .go();
+    }
     function clear(next = noop) {
         build.settings();
         build.list();

@@ -87,7 +87,9 @@ var DAL = (function() {
 
     function filter(list, filter, next = noop) {
         let filtered = list.filter((item) => item[0].title.toLowerCase().indexOf(filter.toLowerCase()) !== -1);
-        filtered.unshift([{ type: 'listsearch', value: filter }]);
+        if (list.length > 0 && filtered.length === 0) {
+            filtered.unshift([{ type: 'plain', value: 'no results' }]);
+        }
         next(filtered);
     }
 

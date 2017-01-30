@@ -140,15 +140,13 @@ var DAL = (function() {
     ///////////////////////
     // Remote Data Fetch //
     ///////////////////////
-    function syncLocalAndRemote(next) {
-        let sheet = memoise.get('sheet');
-
-        if (!sheet) {
+    function syncLocalAndRemote(next = noop) {
+        if (!memoiser.sheet) {
             next();
             return;
         }
 
-        let url = sheetDataURI(sheet || '');
+        let url = sheetDataURI(memoiser.sheet || '');
 
         try {
             fetch(url)

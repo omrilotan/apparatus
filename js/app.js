@@ -45,26 +45,12 @@ var app = (function() {
         DAL.getColour(build.colour);
 
         (new Flow())
-            .step(get_and_build_settings)
-            .step(get_and_build_list)
-            .step(DAL.syncLocalAndRemote)
-            .step(next)
-            .go();
-    }
-
-    function get_and_build_settings(next = noop) {
-        (new Flow())
             .step(DAL.getStoredList)
             .step(build.settings)
-            .step(next)
-            .go();
-    }
-
-    function get_and_build_list(next = noop) {
-        (new Flow())
             .step(DAL.getStoredData)
             .step(build.list)
             .step(focus)
+            .step(DAL.syncLocalAndRemote)
             .step(next)
             .go();
     }
@@ -84,6 +70,11 @@ var app = (function() {
         if (document.body.classList.contains('settings')) {
             return;
         }
+
+        if (!document.body.classList.contains('list')) {
+            return;
+        }
+
         document.querySelector('input[target="listsearch"]').focus()
     }
 

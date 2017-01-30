@@ -88,6 +88,7 @@
 
     tagActions.a.click.settings = function() {
         document.body.classList.toggle('settings');
+        app.focus();
     }
 
     tagActions.a.click.purge = function() {
@@ -164,6 +165,7 @@
                 (new Flow())
                     .step(DAL.getStoredData)
                     .step(build.list)
+                    .step(app.focus)
                     .go();
                 break;
             default:
@@ -171,6 +173,7 @@
                     .step(DAL.getStoredData)
                     .step((list, next) => DAL.filter(list, target.value, next) )
                     .step(build.list)
+                    .step(app.focus)
                     .go();
                 break;
         }

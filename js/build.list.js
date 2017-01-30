@@ -35,8 +35,6 @@ build.list = (function(
         group(fragments, (res) => nav.appendChild(res) );
         document.body.classList.add('list');
 
-        setTimeout(() => nav.querySelector('input[target="listsearch"]').focus(), 200);
-
         next();
     }
 

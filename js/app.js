@@ -64,17 +64,32 @@ var app = (function() {
         (new Flow())
             .step(DAL.getStoredData)
             .step(build.list)
+            .step(focus)
             .step(next)
             .go();
     }
+
     function clear(next = noop) {
         build.settings();
         build.list();
         next();
     }
 
+    function focus(next = noop) {
+        setTimeout(focus_unless_settings, 200);
+        next();
+    }
+
+    function focus_unless_settings() {
+        if (document.body.classList.contains('settings')) {
+            return;
+        }
+        document.querySelector('input[target="listsearch"]').focus()
+    }
+
     return {
         main,
-        clear
+        clear,
+        focus
     };
 }());

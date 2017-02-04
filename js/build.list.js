@@ -33,7 +33,7 @@ build.list = (function(
 
         items.map(buildRecord).forEach(appendToFragemnt);
         group(fragments, (res) => nav.appendChild(res) );
-        document.body.classList.add('list');
+        setTimeout(() => document.body.classList.add('list'), 500);
 
         next();
     }

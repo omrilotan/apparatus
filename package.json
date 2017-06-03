@@ -1,0 +1,29 @@
+{
+  "name": "apparatus",
+  "description": "Apparatus is an open source bookmark and collaboration tool",
+  "version": "0.2.5",
+  "author": "omri",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omrilotan/apparatus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/omrilotan/apparatus/issues"
+  },
+  "homepage": "https://github.com/omrilotan/apparatus#readme",
+  "engines": {
+    "node": "=8.0.0"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/webpack --config webpack.config.js --env development --watch",
+    "pack": "./scripts/pack.sh",
+    "prepack": "npm run build",
+    "build": "./node_modules/.bin/webpack --config webpack.config.js",
+    "prebuild": "npm run clean",
+    "clean": "rm -rf pack & rm -rf extension"
+  },
+  "devDependencies": {
+    "webpack": "^2.6.1"
+  }
+}

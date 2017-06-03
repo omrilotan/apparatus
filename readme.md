@@ -31,4 +31,4 @@ Publish to web | Automatically update when changes are made
 ## Contribute
 
 1. Keep the app slim.
-2. Zip the extension using the shell script `./pack.sh`
+2. Zip the extension using the shell script `npm run pack`

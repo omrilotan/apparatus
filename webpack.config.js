@@ -6,7 +6,7 @@ const PROD = !DEV;
 const rules = [];
 
 const entry = {
-    'background.js': './src/background.js',
+    'background.js': './src/background/index.js',
 };
 
 const output = {

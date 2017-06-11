@@ -1,33 +1,24 @@
 const path = require('path');
 
-const DEV = typeof env !== 'undefined' && env === 'development';
-const PROD = !DEV;
+const dev = (env) => process.env.NODE_ENV === 'development' || typeof env !== 'undefined' && env === 'development';
 
 const rules = [];
 
-const entry = {
-    'background.js': './src/background/index.js',
-};
+const plugins = [];
+
+const entry = require('./webpack/entries');
 
 const output = {
     path: path.resolve(__dirname, './'),
     filename: 'extension/[name]',
 };
 
-const devtool = 'inline-source-map';
-
 module.exports = (env) => {
-    const config = {
+    return {
         module: {rules},
+        plugins,
         entry,
         output,
+        devtool: dev(env) ? 'inline-source-map' : '',
     };
-
-    if (DEV) {
-        Object.assign(config, {
-            devtool
-        });
-    }
-
-    return config;
-}
+};

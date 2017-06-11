@@ -16,14 +16,20 @@
     "node": "=8.0.0"
   },
   "scripts": {
-    "start": "./node_modules/.bin/webpack --config webpack.config.js --env development --watch",
+    "start": "./node_modules/npm-run-all/bin/npm-run-all/index.js --parallel dev sass:watch",
+    "sass": "./node_modules/node-sass/bin/node-sass src/css/index.scss extension/style.css --include-path=src/css --source-map-embed",
+    "sass:watch": "./node_modules/node-sass/bin/node-sass src/css/index.scss extension/style.css --include-path=src/css --source-map-embed --watch",
+    "dev": "./node_modules/.bin/webpack --config webpack.config.js --env development --watch",
     "pack": "./scripts/pack.sh",
     "prepack": "npm run build",
     "build": "./node_modules/.bin/webpack --config webpack.config.js",
     "prebuild": "npm run clean",
     "clean": "rm -rf pack & rm -rf extension"
   },
-  "devDependencies": {
+  "dependencies": {
+    "amdefine": "^1.0.1",
+    "node-sass": "^4.5.3",
+    "npm-run-all": "^4.0.2",
     "webpack": "^2.6.1"
   }
 }

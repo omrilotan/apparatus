@@ -1,0 +1,53 @@
+aside {
+    position: relative;
+
+    > a, input {
+        display: block;
+        float: left;
+        padding: 0 1em;
+        box-sizing: border-box;
+    }
+
+
+    p {
+        padding: .5em 1em;
+        line-height: 1.5em;
+        white-space: pre-line;
+
+        a {
+            color: var(--theme-colour);
+            text-decoration: underline;
+        }
+    }
+
+    form {
+        overflow: auto;
+    }
+}
+
+.sheet-form {
+    > div {
+        overflow: auto;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    a {
+        float: right;
+        padding: 0;
+        text-align: center;
+        padding: 0 1em;
+        cursor: pointer;
+
+        &:hover {
+            background: #fff;
+        }
+    }
+}
+
+a.colour {
+    display: inline-block;
+    width: 20%;
+}

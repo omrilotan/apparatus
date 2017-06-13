@@ -66,20 +66,8 @@ h4 {
     padding: 0 1em;
     border-bottom: 1px solid var(--theme-colour);
 }
-.settings-trigger:before {
-    content: "\2699";
-    display: inline-block;
-    transform: rotate3d(0, 0, 0, 180deg);
-    width: 1.5em;
-    text-align: center;
-}
-.settings-trigger:focus {
-    text-indent: 0 !important;
-}
-.settings .settings-trigger:before {
-    content: "\2794";
-    transform: rotate3d(0, 0, 1, 180deg);
-}
+
+@import './settings-trigger';
 
 input[target="listsearch"] {
     width: 100%;

@@ -1,7 +1,7 @@
 {
   "name": "apparatus",
   "description": "Apparatus is an open source bookmark and collaboration tool",
-  "version": "0.2.5",
+  "version": "1.0.0",
   "author": "omri",
   "license": "MIT",
   "repository": {
@@ -16,10 +16,11 @@
     "node": "=8.0.0"
   },
   "scripts": {
-    "start": "./node_modules/npm-run-all/bin/npm-run-all/index.js --parallel dev sass:watch",
+    "start": "./node_modules/npm-run-all/bin/npm-run-all/index.js --parallel js sass:watch static",
     "sass": "./node_modules/node-sass/bin/node-sass src/css/index.scss extension/style.css --include-path=src/css --source-map-embed",
     "sass:watch": "./node_modules/node-sass/bin/node-sass src/css/index.scss extension/style.css --include-path=src/css --source-map-embed --watch",
-    "dev": "./node_modules/.bin/webpack --config webpack.config.js --env development --watch",
+    "js": "./node_modules/.bin/webpack --config webpack.config.js --env development --watch",
+    "static": "node scripts/static-watcher",
     "pack": "./scripts/pack.sh",
     "prepack": "npm run build",
     "build": "./node_modules/.bin/webpack --config webpack.config.js",

@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "Apparatus",
-  "author": "Omri",
-  "description": "Apparatus is an open source bookmark and collaboration tool.",
-  "version": "1.0.0",
+  "name": "{{ name }}",
+  "author": "{{ author }}",
+  "description": "{{ description }}",
+  "version": "{{ version }}",
   "icons": {
     "16": "images/icon.png",
     "48": "images/image.png",

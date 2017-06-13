@@ -1,0 +1,18 @@
+.settings-trigger {
+
+    &:before {
+        content: "\2699";
+        display: inline-block;
+        transform: rotate3d(0, 0, 0, 180deg);
+        width: 1.5em;
+        text-align: center;
+    }
+    &:focus {
+        text-indent: 0 !important;
+    }
+}
+
+.settings .settings-trigger:before {
+    content: "\2794";
+    transform: rotate3d(0, 0, 1, 180deg);
+}

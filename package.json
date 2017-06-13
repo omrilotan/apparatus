@@ -1,8 +1,8 @@
 {
-  "name": "apparatus",
+  "name": "Apparatus",
   "description": "Apparatus is an open source bookmark and collaboration tool",
   "version": "1.0.0",
-  "author": "omri",
+  "author": "Omri",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "clean": "rm -rf pack & rm -rf extension"
   },
   "dependencies": {
+    "@fiverr/futile": "^1.7.0",
     "amdefine": "^1.0.1",
     "node-sass": "^4.5.3",
     "npm-run-all": "^4.0.2",
